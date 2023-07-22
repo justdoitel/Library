@@ -99,6 +99,10 @@ table {
     justify-items: center;
 }
 
+.book:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
 .book p {
     word-wrap: break-word;
 }
