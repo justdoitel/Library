@@ -1,4 +1,5 @@
 //TODO: Sorting (reverse)
+//TODO: shorten code somehow
 let counter = 0;
 let books = [];
 let rot = 0;
@@ -17,11 +18,11 @@ let pagesubmit = document.querySelector("#pageform .submit-button")
 let editingid = null;
 let editingCard = null;
 
-let sortbtn = document.getElementById("sort");
-sortbtn.addEventListener("click", function() {
-    rot=rot+180;
-    sortbtn.style = `transform: rotate(${rot}deg)`;
-});
+// let sortbtn = document.getElementById("sort");
+// sortbtn.addEventListener("click", function() {
+//     rot=rot+180;
+//     sortbtn.style = `transform: rotate(${rot}deg)`;
+// });
 
 function attemptedit(card,id){
     editingid = id;
@@ -143,7 +144,7 @@ function makeCard(book){ //make the card of the book and return it
     ratio.appendChild(totalspan)
     let editbtn = document.createElement('button');
     editbtn.classList.add("edit-btn")
-    editbtn.innerText = "Edit page read"
+    editbtn.innerText = "Edit pages read"
     let delbtn = document.createElement('button');
     delbtn.classList.add("del-btn")
     delbtn.innerText = "Remove book"

@@ -47,16 +47,28 @@ table {
 .container {
     display: grid;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 100vw;
 }
 
 .header{
     display: grid;
-    grid-template-columns: min-content 1fr min-content min-content;
+    grid-template-columns: min-content 1fr min-content;
     font-size: 3em;
     align-items: center;
     background-color: hsl(0, 0%, 60%);
     padding: calc(5px + 1vmin);
     gap: calc(5px + 1vw);
+}
+
+@media (max-width: 13em) {
+    .header span {
+        display: none;
+    }
+    .header {
+        grid-template-columns: min-content min-content;
+        justify-content: space-between;
+    }
+
 }
 
 .header>img {
