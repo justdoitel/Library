@@ -1,0 +1,206 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    background-color: hsl(0, 0%, 70%);
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+.container {
+    display: grid;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header{
+    display: grid;
+    grid-template-columns: min-content 1fr min-content min-content;
+    font-size: 3em;
+    align-items: center;
+    background-color: hsl(0, 0%, 60%);
+    padding: calc(5px + 1vmin);
+    gap: calc(5px + 1vw);
+}
+
+.header>img {
+    width: 2em;
+    height: 2em;
+}
+
+.header>.btn{
+    font-size: 1em;
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20em,1fr));
+    gap: 3vh 2vw;
+    padding: 2vw 5vw;
+}
+
+.book {
+    display: grid;
+    background-color: hsl(0, 0%, 85%);
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 1em;
+    min-height: 15em;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.book p {
+    word-wrap: break-word;
+}
+
+.book .title{
+   font-size: 1.5em;
+   font-weight: 800;
+}
+
+.book .author {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+.book button {
+    padding: 10px 20px;
+    border: none;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 50%;
+}
+
+.book .edit-btn{
+    background-color: hsl(0, 0%, 20%);
+}
+
+.book .edit-btn:hover {
+    background-color: hsl(0, 0%, 33%);
+}
+
+.book .del-btn{
+    background-color: hsl(0, 100%, 33%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.book .del-btn:hover {
+    background-color: hsl(0, 100%, 44%);
+}
+
+.header .btn {
+    cursor: pointer; 
+    transition: 0.2s ease;
+}
+
+.header .btn:hover{
+    filter: invert(0.2);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    
+}
+
+#overlay.active{
+    background-color: #00000080;
+    display: block;
+}
+
+.tosee {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    gap: 1em;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    justify-items: center;
+}
+
+.tosee.active {
+    display: grid;
+}
+
+.tosee.title {
+    font-family: 'Arial', sans-serif;
+    color: black;
+    font-weight: 900; 
+}
+
+.tosee input {
+    font-size: max(16px,1em);
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 5px;
+}
+
+.tosee .submit-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #00cc44;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.tosee .submit-button:hover {
+    background-color: #008032;
+}

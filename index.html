@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.svg" alt="Logo picture of the library" class="logo">
+            <span>Library</span>
+            <img class="btn" id="sort" src="sort.svg"></img>
+            <img class="btn" id="add" src="plus.svg"></img>
+        </div>
+        <div class="books">
+         
+        </div>
+    </div>
+    <div id="overlay"> 
+    </div>
+    <form id="mainform" class="tosee">
+        <input name="title" type="text" placeholder="Title" required>
+        <input name="author" type="text" placeholder="Author" required>
+        <input name="read" type="number" placeholder="Pages Read" required>
+        <input name="total" type="number" placeholder="Total Pages" min="1" required> 
+        <button class="submit-button">Submit</button>
+    </form>
+    <form id="pageform" class="tosee">
+        <input name="read" type="number" placeholder="Pages Read" required>
+        <button class="submit-button">Submit</button>
+    </form>
+    <script src="code.js"></script> 
+</body>
+</html>
