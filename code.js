@@ -24,7 +24,7 @@ let editingCard = null;
 //     sortbtn.style = `transform: rotate(${rot}deg)`;
 // });
 
-function attemptedit(card,id){
+function attemptEdit(card,id){
     editingid = id;
     editingCard = card;
     pageform.classList.add("active");
@@ -94,7 +94,7 @@ mainsubmit.addEventListener ('click',(event)=>{
                     event.currentTarget.remove();
                     books.splice(getIndexFromId(id),1)
                 } else if (event.target.classList.contains("edit-btn")){
-                    attemptedit(event.currentTarget,id);
+                    attemptEdit(event.currentTarget,id);
                 }
             })
 
