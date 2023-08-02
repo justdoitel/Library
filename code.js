@@ -36,11 +36,6 @@ if(localStorage.getItem("counter")){
     counter = localStorage.getItem("counter");
 }
 
-
-load();
-
-
-
 function attemptEdit(card,id){
     editingid = id;
     editingCard = card;
