@@ -56,6 +56,7 @@ function getIndexFromId(id) {
 }
 
 pagesubmit.addEventListener("click", function(event){
+    event.target.setCustomValidity('');
     if(pagesubmit.checkValidity()) {
         event.preventDefault();
         let currBook = books[getIndexFromId(editingid)];
@@ -65,6 +66,13 @@ pagesubmit.addEventListener("click", function(event){
             editingCard.querySelector('progress').value=parseInt(newpagenum.value)
             editingCard.querySelector('.read').innerText=newpagenum.value;
             overlay.click()
+        } else if (parseInt(newpagenum.value)<=currBook.read) {
+            if(parseInt(newpagenum.value)<currBook.read) event.target.setCustomValidity("Huh :0 you reading backwards or smth?");
+            else event.target.setCustomValidity(`You've already reported that you're on page ${currBook.read} :)`);
+            event.target.reportValidity()
+        } else if (parseInt(newpagenum.value)>currBook.total){
+            event.target.setCustomValidity('Hmm, you read more than the number of pages in the book?');
+            event.target.reportValidity()
         }
     }
 })
