@@ -24,6 +24,23 @@ let editingCard = null;
 //     sortbtn.style = `transform: rotate(${rot}deg)`;
 // });
 
+
+let stored = JSON.parse(localStorage.getItem("books"));
+if(stored){
+    books=stored;
+    for (book of books){
+        appendToDisplay(makeCard(book));
+    }
+}
+if(localStorage.getItem("counter")){
+    counter = localStorage.getItem("counter");
+}
+
+
+load();
+
+
+
 function attemptEdit(card,id){
     editingid = id;
     editingCard = card;
@@ -32,8 +49,8 @@ function attemptEdit(card,id){
 }
 
 function getIndexFromId(id) {
-id=parseInt(id)
-let x = 0;
+    id=parseInt(id)
+    let x = 0;
     for (book of books){
         if(book.id===id){
             return x;
@@ -49,6 +66,7 @@ pagesubmit.addEventListener("click", function(event){
         let currBook = books[getIndexFromId(editingid)];
         if(parseInt(newpagenum.value)>currBook.read&&parseInt(newpagenum.value)<=currBook.total){
             currBook.read=parseInt(newpagenum.value);
+            localStorage.setItem("books",JSON.stringify(books))
             editingCard.querySelector('progress').value=parseInt(newpagenum.value)
             editingCard.querySelector('.read').innerText=newpagenum.value;
             overlay.click()
@@ -63,17 +81,17 @@ add.addEventListener("click", function() {
 });
 
 overlay.addEventListener('click', (event) => {
-        overlay.classList.remove("active")
-        mainform.classList.remove("active")
-        pageform.classList.remove("active")
-        title.value="";
-        author.value="";
-        read.value="";
-        total.value="";
-        newpagenum.value="";
-        editingid=null;
-        editingCard=null;
-
+    overlay.classList.remove("active")
+    mainform.classList.remove("active")
+    pageform.classList.remove("active")
+    title.value="";
+    author.value="";
+    read.value="";
+    total.value="";
+    newpagenum.value="";
+    editingid=null;
+    editingCard=null;
+    
 });
 
 mainsubmit.addEventListener ('click',(event)=>{
@@ -85,20 +103,7 @@ mainsubmit.addEventListener ('click',(event)=>{
                 read.value=total.value
                 total.value=temp;
             }
-            newBook = new Book (title.value,author.value,parseInt(read.value),parseInt(total.value))
-            let newcard = makeCard(storeBook(newBook))
-
-            newcard.addEventListener("click",function(event){
-                let id = event.currentTarget.dataset.id;
-                if(event.target.classList.contains("del-btn")){
-                    event.currentTarget.remove();
-                    books.splice(getIndexFromId(id),1)
-                } else if (event.target.classList.contains("edit-btn")){
-                    attemptEdit(event.currentTarget,id);
-                }
-            })
-
-            appendToDisplay(newcard)
+            appendToDisplay(makeCard(storeBook(new Book (title.value,author.value,parseInt(read.value),parseInt(total.value)))))
         }
         overlay.click();
     }
@@ -112,10 +117,12 @@ function Book(title, author, read, total) { //make the book object and return it
     this.read=read;
     this.total=total;
     this.id=counter++;
+    localStorage.setItem("counter",counter);
 }
 
 function storeBook(book){ //store the book in our array and return it
     books.push(book);
+    localStorage.setItem("books",JSON.stringify(books))
     return book;
 }
 
@@ -157,6 +164,16 @@ function makeCard(book){ //make the card of the book and return it
     card.appendChild(ratio);
     card.appendChild(editbtn);
     card.appendChild(delbtn);
+    card.addEventListener("click",function(event){
+        let id = event.currentTarget.dataset.id;
+        if(event.target.classList.contains("del-btn")){
+            event.currentTarget.remove();
+            books.splice(getIndexFromId(id),1)
+            localStorage.setItem("books",JSON.stringify(books))
+        } else if (event.target.classList.contains("edit-btn")){
+            attemptEdit(event.currentTarget,id);
+        }
+    })
     return card;
 }
 
