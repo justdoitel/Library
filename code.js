@@ -24,6 +24,7 @@ let editingCard = null;
 //     sortbtn.style = `transform: rotate(${rot}deg)`;
 // });
 
+window.addEventListener('storage',()=>{location.reload()});
 
 let stored = JSON.parse(localStorage.getItem("books"));
 if(stored){
